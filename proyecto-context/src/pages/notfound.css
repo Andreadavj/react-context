@@ -1,0 +1,13 @@
+.not-found-container {
+    text-align: center;
+    padding: 50px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  .not-found-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+  
