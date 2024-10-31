@@ -10,8 +10,8 @@ import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import { CartProvider } from "./contexts/cartContext";
-import { AuthProvider } from "./contexts/AuthContext"; // Asegúrate de que la ruta sea correcta
-import ProtectedRoute from "./contexts/ProtectedRoute"; // Asegúrate de que la ruta sea correcta
+import { AuthProvider } from "./contexts/AuthContext"; 
+import ProtectedRoute from "./contexts/ProtectedRoute"; 
 import "./App.css";
 
 const App = () => {

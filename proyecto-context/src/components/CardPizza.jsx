@@ -1,31 +1,19 @@
 import React from "react";
-import pizzas from "../pages/pizzas";
 import PropTypes from "prop-types";
 
-const CardPizza = ({ pizza, increaseQuantity, decreaseQuantity }) => {
+const CardPizza = ({ pizza, addToCart }) => {
   return (
     <div className="card">
       <img src={pizza.image} className="card-img-top" alt={pizza.name} />
       <div className="card-body">
         <h5 className="card-title">{pizza.name}</h5>
-
         <p className="card-text">
           🍕 {pizza.ingredients.join(", ")}
         </p>
         <p className="price">Precio: ${pizza.price.toLocaleString()}</p>
 
         <div>
-          <button className="btn btn-primary"> 👀 Ver más</button>
-          <button onClick={increaseQuantity} className="btn btn-success"> 🛒 Añadir</button>
-        </div>
-
-        <div className="mt-3 d-flex justify-content-center">
-          <button onClick={increaseQuantity} className="btn btn-success">
-            +
-          </button>
-          <button onClick={decreaseQuantity} className="btn btn-danger">
-            -
-          </button>
+          <button onClick={addToCart} className="btn btn-success"> 🛒 Añadir</button>
         </div>
       </div>
     </div>
@@ -39,11 +27,8 @@ CardPizza.propTypes = {
     ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired,
-    stock: PropTypes.number.isRequired,
   }).isRequired,
-  increaseQuantity: PropTypes.func.isRequired,
-  decreaseQuantity: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default CardPizza;

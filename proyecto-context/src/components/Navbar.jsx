@@ -1,58 +1,34 @@
-import React from "react";
-import { useContext } from 'react';
-import { CartContext } from '../contexts/cartContext';
+// src/components/Navbar.jsx
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../contexts/cartContext';
 
 const Navbar = () => {
-  const token = true; // Simula si el usuario está autenticado o no
   const { total } = useContext(CartContext);
+  const token = true; // Simulación de autenticación
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/"> 
-          Pizzería Mamma Mia! 
-        </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <Link className="navbar-brand" to="/">Pizzería Mamma Mia!</Link>
         <div className="collapse navbar-collapse" id="navbarNav">
           <div className="navbar-nav">
-            <Link className="nav-link btn btn-outline-success me-2" aria-current="page" to="/" > 
-              Home 🍕 
-            </Link>
+            <Link className="nav-link btn btn-outline-success me-2" to="/">Home 🍕</Link>
+            {/* Links para usuario autenticado o no */}
             {token ? (
               <>
-                <Link className="nav-link btn btn-outline-success me-2" to="/profile" 
-                  // Redirige a la página de perfil 
-                > 
-                  Profile 👨‍💻 
-                </Link>
-                <Link className="nav-link btn btn-outline-success me-2" to="/logout" 
-                  // Aquí puedes enlazar a la función de logout en el futuro 
-                > 
-                  Logout 🔐 
-                </Link>
+                <Link className="nav-link btn btn-outline-success me-2" to="/profile">Profile 👨‍💻</Link>
+                <Link className="nav-link btn btn-outline-success me-2" to="/logout">Logout 🔐</Link>
               </>
             ) : (
               <>
-                <Link className="nav-link btn btn-outline-success me-2" to="/login" 
-                  // Ruta para login 
-                > 
-                  Login 🚪 
-                </Link>
-                <Link className="nav-link btn btn-outline-success me-2" to="/register" 
-                  // Ruta para el registro 
-                > 
-                  Register 🔐 
-                </Link>
+                <Link className="nav-link btn btn-outline-success me-2" to="/login">Login 🚪</Link>
+                <Link className="nav-link btn btn-outline-success me-2" to="/register">Register 🔐</Link>
               </>
             )}
           </div>
           <div className="navbar-nav ms-auto">
-            <Link className="nav-link btn btn-outline-success" to="/cart"> 
-              Total: ${total.toLocaleString()} 
-            </Link>
+            <Link className="nav-link btn btn-outline-success" to="/cart">🛒 Total: ${total.toFixed(2)}</Link>
           </div>
         </div>
       </div>

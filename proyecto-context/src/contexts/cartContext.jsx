@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+// src/contexts/cartContext.js
+import React, { createContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
@@ -8,7 +9,7 @@ const CartProvider = ({ children }) => {
 
   const calculateTotal = () => {
     const newTotal = cart.reduce(
-      (acc, item) => acc + item.price * item.quantity, // Cambié "pizza" a "item" para ser más genérico
+      (acc, item) => acc + item.price * item.quantity,
       0
     );
     setTotal(newTotal);
