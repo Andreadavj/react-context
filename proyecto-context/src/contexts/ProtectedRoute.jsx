@@ -1,18 +1,15 @@
-// src/contexts/ProtectedRoute.js
-import React, { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
-import { AuthContext } from './AuthContext';
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "./AuthContext"; // Asegúrate de que la ruta es correcta
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth(); // Accede al estado de autenticación
 
-  // Si el usuario no está autenticado, redirige a la página de login
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace />; // Redirige si no hay usuario
   }
 
-  // Si el usuario está autenticado, muestra los hijos (las rutas protegidas)
-  return children;
+  return children; // Si hay usuario, muestra los hijos
 };
 
 export default ProtectedRoute;
