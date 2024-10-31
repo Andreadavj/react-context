@@ -8,7 +8,7 @@ const CartProvider = ({ children }) => {
 
   const calculateTotal = () => {
     const newTotal = cart.reduce(
-      (acc, pizza) => acc + pizza.price * pizza.quantity,
+      (acc, item) => acc + item.price * item.quantity, // Cambié "pizza" a "item" para ser más genérico
       0
     );
     setTotal(newTotal);

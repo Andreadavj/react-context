@@ -7,39 +7,40 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Header from "./components/Header";
 import Cart from "./pages/Cart";
-import pizzas from "./pages/pizzas";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
-import { CartProvider } from '../src/contexts/cartContext';
+import { CartProvider } from "./contexts/cartContext";
+import { AuthProvider } from "./contexts/AuthContext"; // Asegúrate de que la ruta sea correcta
+import ProtectedRoute from "./contexts/ProtectedRoute"; // Asegúrate de que la ruta sea correcta
 import "./App.css";
-import { ProtectedRoute } from '../src/contexts/ProtectedRoute';
 
 const App = () => {
   return (
-    <CartProvider>
-      <div>
-        <Navbar />
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-      </div>
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <div className="app-container">
+          <Navbar />
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
+        </div>
+      </CartProvider>
+    </AuthProvider>
   );
 };
 
 export default App;
-
